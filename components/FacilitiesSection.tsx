@@ -1,7 +1,9 @@
+"use client";
 
+import { useState, useEffect, useRef } from "react";
 import {
   TentTree,
-  Accessibility,
+  MapPin, // Menggantikan Accessibility
   Droplets,
   Clock3,
 } from "lucide-react";
@@ -15,7 +17,7 @@ const facilities = [
     label: "01",
   },
   {
-    icon: Accessibility,
+    icon: MapPin, // Menggantikan Accessibility
     title: "Ruang yang Terjangkau",
     description:
       "Membantu peserta dan pengunjung menemukan ruang untuk beribadah di area acara.",
@@ -38,8 +40,59 @@ const facilities = [
 ];
 
 export default function FacilitiesSection() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const carouselRef = useRef<HTMLDivElement | null>(null);
+  const [isHovered, setIsHovered] = useState(false);
+
+  // Auto-play Carousel untuk tampilan Mobile
+  useEffect(() => {
+    if (isHovered) return;
+
+    const interval = setInterval(() => {
+      setActiveIndex((prevIndex) => {
+        const nextIndex = (prevIndex + 1) % facilities.length;
+        if (carouselRef.current) {
+          const cardWidth = carouselRef.current.scrollWidth / facilities.length;
+          carouselRef.current.scrollTo({
+            left: cardWidth * nextIndex,
+            behavior: "smooth",
+          });
+        }
+        return nextIndex;
+      });
+    }, 3500);
+
+    return () => clearInterval(interval);
+  }, [isHovered]);
+
+  // Handler saat user menggeser manual di HP
+  const handleScroll = () => {
+    if (carouselRef.current) {
+      const scrollPosition = carouselRef.current.scrollLeft;
+      const cardWidth = carouselRef.current.scrollWidth / facilities.length;
+      const newIndex = Math.round(scrollPosition / cardWidth);
+      if (newIndex !== activeIndex && newIndex >= 0 && newIndex < facilities.length) {
+        setActiveIndex(newIndex);
+      }
+    }
+  };
+
+  const handleDotClick = (index: number) => {
+    setActiveIndex(index);
+    if (carouselRef.current) {
+      const cardWidth = carouselRef.current.scrollWidth / facilities.length;
+      carouselRef.current.scrollTo({
+        left: cardWidth * index,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <section className="facilities-section section-pad" id="fasilitas">
+      {/* Background Glow Ornament */}
+      <div className="facilities-bg-glow" />
+
       <div className="page-container">
         <div className="section-topline">
           <span className="section-kicker">
@@ -65,22 +118,48 @@ export default function FacilitiesSection() {
           </p>
         </div>
 
-        <div className="facility-grid">
-          {facilities.map(({ icon: Icon, title, description, label }) => (
-            <article className="facility-card" key={title}>
-              <div className="facility-card-top">
-                <span className="facility-number">{label}</span>
+        {/* Carousel & Grid Container */}
+        <div 
+          className="facilities-carousel-wrapper"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          onTouchStart={() => setIsHovered(true)}
+          onTouchEnd={() => setIsHovered(false)}
+        >
+          <div
+            className="facility-grid"
+            ref={carouselRef}
+            onScroll={handleScroll}
+          >
+            {facilities.map(({ icon: Icon, title, description, label }) => (
+              <article className="facility-card" key={title}>
+                <div className="facility-card-top">
+                  <span className="facility-number">{label}</span>
 
-                <span className="facility-icon">
-                  <Icon size={24} strokeWidth={1.6} />
-                </span>
-              </div>
+                  <span className="facility-icon">
+                    <Icon size={22} strokeWidth={1.8} />
+                  </span>
+                </div>
 
-              <h3>{title}</h3>
-              <p>{description}</p>
-              <span className="facility-bottom-line" />
-            </article>
-          ))}
+                <h3>{title}</h3>
+                <p>{description}</p>
+                <span className="facility-bottom-line" />
+              </article>
+            ))}
+          </div>
+
+          {/* Indikator Bulatan (Dots) Khusus Mobile */}
+          <div className="facilities-dots">
+            {facilities.map((_, idx) => (
+              <button
+                key={idx}
+                type="button"
+                className={`dot-item ${activeIndex === idx ? "active" : ""}`}
+                onClick={() => handleDotClick(idx)}
+                aria-label={`Lihat fasilitas ${idx + 1}`}
+              />
+            ))}
+          </div>
         </div>
 
         <p className="facility-footnote">

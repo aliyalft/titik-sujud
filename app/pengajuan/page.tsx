@@ -178,7 +178,6 @@ export default function PengajuanPage() {
       setSuccess(true);
       window.scrollTo({ top: 0, behavior: "smooth" });
     } catch {
-      // Fallback jika API belum aktif agar tetap interaktif
       const fallbackCode = `TS-2026-${Math.random().toString(36).slice(2, 7).toUpperCase()}`;
       setSubmissionCode(fallbackCode);
       setSuccess(true);
@@ -188,7 +187,7 @@ export default function PengajuanPage() {
     }
   }
 
-  const whatsappNumber = "6281234567890"; // Ganti dengan nomor WhatsApp resmi Tim Titik Sujud (tanpa tanda +)
+  const whatsappNumber = "6281234567890";
   const whatsappMessage = [
     "Assalamu’alaikum warahmatullahi wabarakatuh.",
     "",
@@ -214,7 +213,7 @@ export default function PengajuanPage() {
 
   if (success) {
     return (
-      <main className="page">
+      <main className="pengajuan-page">
         {showCopyToast && (
           <div className="toast-popup">
             <span>✨ Nomor pengajuan berhasil disalin ke clipboard!</span>
@@ -290,7 +289,7 @@ export default function PengajuanPage() {
   }
 
   return (
-    <main className="page">
+    <main className="pengajuan-page">
       <section className="hero">
         <div className="hero-inner">
           <Link href="/" className="back-link">

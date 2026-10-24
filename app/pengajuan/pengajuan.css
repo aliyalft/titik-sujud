@@ -1,9 +1,10 @@
 /* ==========================================
-   TITIK SUJUD — PENGAJUAN KOLABORASI (HIGH CONTRAST & ELEGANT)
+   TITIK SUJUD — PENGAJUAN KOLABORASI (ISOLATED SCOPE)
    File: pengajuan.css
    ========================================== */
 
-:root {
+/* Kunci Variabel Warna Hanya Untuk Halaman Pengajuan */
+.pengajuan-page {
   --green: #1b4d3e;
   --green-dark: #0f2d24;
   --green-light: #e6f0eb;
@@ -12,25 +13,25 @@
   --muted: #485c52;      /* Teks sekunder yang tetap mudah dibaca */
   --line: #cbd8d1;       /* Garis tepi & border tegas */
   --cream: #f0f4f2;      /* Background luar sedikit lebih tebal untuk kontras card */
-}
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-.page {
   min-height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden;
   background: var(--cream);
   color: var(--ink);
   font-family: var(--font-body, Arial, sans-serif);
   padding-bottom: 50px;
 }
 
+/* Kunci Box Sizing Hanya di Dalam Halaman Pengajuan */
+.pengajuan-page,
+.pengajuan-page *,
+.pengajuan-page *::before,
+.pengajuan-page *::after {
+  box-sizing: border-box;
+}
+
 /* Toast Popup untuk Salin Kode */
-.toast-popup {
+.pengajuan-page .toast-popup {
   position: fixed;
   top: 24px;
   left: 50%;
@@ -54,17 +55,16 @@
 }
 
 /* Hero Section — Hijau Sage Berkarakter & Elegan */
-.hero {
+.pengajuan-page .hero {
   position: relative;
   isolation: isolate;
   overflow: hidden;
   padding: 44px 24px 110px;
-  /* Gradasi sedikit lebih berbobot agar tidak pucat */
   background: linear-gradient(135deg, #c3dacd 0%, #b5cebf 50%, #a6c3b1 100%);
   color: #0d261e;
 }
 
-.hero::after {
+.pengajuan-page .hero::after {
   position: absolute;
   z-index: -1;
   right: -80px;
@@ -76,13 +76,13 @@
   content: "";
 }
 
-.hero-inner {
+.pengajuan-page .hero-inner {
   width: min(100%, 1040px);
   margin: 0 auto;
 }
 
 /* Tombol Kembali di Hero */
-.back-link {
+.pengajuan-page .back-link {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -99,13 +99,13 @@
   transition: all 0.2s ease;
 }
 
-.back-link:hover {
+.pengajuan-page .back-link:hover {
   background: #1b4d3e;
   color: #ffffff;
   transform: translateY(-1px);
 }
 
-.eyebrow {
+.pengajuan-page .eyebrow {
   margin: 0 0 12px;
   color: #174235;
   font-size: 11px;
@@ -114,11 +114,11 @@
   text-transform: uppercase;
 }
 
-.hero .eyebrow {
+.pengajuan-page .hero .eyebrow {
   color: #174235;
 }
 
-.hero h1 {
+.pengajuan-page .hero h1 {
   max-width: 850px;
   margin: 0;
   color: #0b1f19;
@@ -129,12 +129,12 @@
   line-height: 1.1;
 }
 
-.hero h1 span {
+.pengajuan-page .hero h1 span {
   color: #1b4d3e;
   font-style: italic;
 }
 
-.hero-description {
+.pengajuan-page .hero-description {
   max-width: 580px;
   margin: 20px 0 0;
   color: #2a4036;
@@ -143,7 +143,7 @@
   line-height: 1.8;
 }
 
-.hero-note {
+.pengajuan-page .hero-note {
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -159,7 +159,7 @@
   letter-spacing: 0.12em;
 }
 
-.note-dot {
+.pengajuan-page .note-dot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
@@ -168,14 +168,14 @@
 }
 
 /* Container Konten Form */
-.content {
+.pengajuan-page .content {
   position: relative;
   width: min(100% - 32px, 920px);
   margin: -60px auto 0;
 }
 
 /* Navigasi Progress */
-.progress {
+.pengajuan-page .progress {
   position: relative;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -188,7 +188,7 @@
   box-shadow: 0 16px 40px rgba(15, 45, 36, 0.08);
 }
 
-.progress-line {
+.pengajuan-page .progress-line {
   position: absolute;
   top: 40px;
   right: 18%;
@@ -197,7 +197,7 @@
   background: #cad8d1;
 }
 
-.progress-step {
+.pengajuan-page .progress-step {
   position: relative;
   z-index: 1;
   display: flex;
@@ -211,7 +211,7 @@
   text-align: center;
 }
 
-.step-number {
+.pengajuan-page .step-number {
   display: grid;
   width: 42px;
   height: 42px;
@@ -225,36 +225,36 @@
   transition: all 0.2s ease;
 }
 
-.progress-step strong {
+.pengajuan-page .progress-step strong {
   color: #20362c;
   font-size: 12px;
 }
 
-.progress-step small {
+.pengajuan-page .progress-step small {
   color: #63776e;
   font-size: 10.5px;
 }
 
-.active-step .step-number {
+.pengajuan-page .active-step .step-number {
   border-color: var(--green);
   background: var(--green);
   color: #fff;
   box-shadow: 0 0 0 5px var(--green-light);
 }
 
-.active-step strong,
-.complete-step strong {
+.pengajuan-page .active-step strong,
+.pengajuan-page .complete-step strong {
   color: var(--green);
 }
 
-.complete-step .step-number {
+.pengajuan-page .complete-step .step-number {
   border-color: #9cb8a9;
   background: var(--green-light);
   color: var(--green);
 }
 
-/* Card Form — Lebih Standout & Kontras */
-.form-card {
+/* Card Form — Standout & Kontras */
+.pengajuan-page .form-card {
   padding: clamp(24px, 4vw, 42px);
   border: 1.5px solid #c0d1c8;
   border-radius: 24px;
@@ -263,20 +263,24 @@
 }
 
 /* Penajaman Label & Input Form */
-.field {
+.pengajuan-page .field {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  color: #0f2d24; /* Teks label lebih gelap dan tegas */
+  color: #0f2d24;
   font-size: 13px;
   font-weight: 700;
 }
 
-.field input,
-.field select,
-.field textarea {
+.pengajuan-page .field b {
+  color: #d9534f;
+}
+
+.pengajuan-page .field input,
+.pengajuan-page .field select,
+.pengajuan-page .field textarea {
   width: 100%;
-  border: 1.5px solid #bdcbd2; /* Border tegas */
+  border: 1.5px solid #bdcbd2;
   border-radius: 12px;
   outline: none;
   background: #ffffff;
@@ -286,19 +290,19 @@
   transition: all 0.2s ease;
 }
 
-.field input::placeholder,
-.field textarea::placeholder {
-  color: #72877d; /* Placeholder lebih terlihat jelas */
+.pengajuan-page .field input::placeholder,
+.pengajuan-page .field textarea::placeholder {
+  color: #72877d;
 }
 
-.field input:focus,
-.field select:focus,
-.field textarea:focus {
+.pengajuan-page .field input:focus,
+.pengajuan-page .field select:focus,
+.pengajuan-page .field textarea:focus {
   border-color: var(--green);
   box-shadow: 0 0 0 4px var(--green-light);
 }
 
-.section-heading {
+.pengajuan-page .section-heading {
   display: flex;
   align-items: flex-start;
   gap: 18px;
@@ -307,7 +311,7 @@
   border-bottom: 1px solid #edf2ef;
 }
 
-.section-number {
+.pengajuan-page .section-number {
   display: grid;
   width: 48px;
   height: 48px;
@@ -321,7 +325,7 @@
   font-weight: 800;
 }
 
-.section-heading h2 {
+.pengajuan-page .section-heading h2 {
   margin: 0;
   color: var(--green-dark);
   font-family: Georgia, "Times New Roman", serif;
@@ -330,20 +334,20 @@
   line-height: 1.2;
 }
 
-.intro {
+.pengajuan-page .intro {
   margin: 8px 0 0;
   color: var(--muted);
   font-size: 13px;
   line-height: 1.8;
 }
 
-.fields {
+.pengajuan-page .fields {
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
 
-.subsection-title {
+.pengajuan-page .subsection-title {
   display: flex;
   align-items: flex-start;
   gap: 14px;
@@ -351,7 +355,7 @@
   border-bottom: 1px solid #edf2ef;
 }
 
-.subsection-title > span {
+.pengajuan-page .subsection-title > span {
   display: grid;
   width: 32px;
   height: 32px;
@@ -364,71 +368,37 @@
   font-weight: 800;
 }
 
-.subsection-title h3 {
+.pengajuan-page .subsection-title h3 {
   margin: 0;
   color: var(--green-dark);
   font-size: 14.5px;
   font-weight: 700;
 }
 
-.subsection-title p {
+.pengajuan-page .subsection-title p {
   margin: 4px 0 0;
   color: var(--muted);
   font-size: 11.5px;
 }
 
-.field-grid {
+.pengajuan-page .field-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px;
 }
 
-.field {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  color: #3b4d45;
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.field b {
-  color: #d9534f;
-}
-
-.field input,
-.field select,
-.field textarea {
-  width: 100%;
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  outline: none;
-  background: #fff;
-  color: var(--ink);
-  padding: 12px 16px;
-  font-size: 13.5px;
-  transition: all 0.2s ease;
-}
-
-.field input:focus,
-.field select:focus,
-.field textarea:focus {
-  border-color: var(--green);
-  box-shadow: 0 0 0 4px var(--green-light);
-}
-
-.full-width {
+.pengajuan-page .full-width {
   grid-column: 1 / -1;
 }
 
-.helper {
+.pengajuan-page .helper {
   color: #83948c;
   font-size: 11px;
   font-weight: 400;
 }
 
 /* Panel TactLink */
-.tactlink-panel {
+.pengajuan-page .tactlink-panel {
   display: grid;
   grid-template-columns: 60px minmax(0, 1fr);
   gap: 20px;
@@ -438,7 +408,7 @@
   background: linear-gradient(135deg, #f7fbf6, #edf5eb);
 }
 
-.tactlink-mark {
+.pengajuan-page .tactlink-mark {
   display: grid;
   width: 56px;
   height: 56px;
@@ -451,14 +421,14 @@
   font-weight: 700;
 }
 
-.tactlink-panel h3 {
+.pengajuan-page .tactlink-panel h3 {
   margin: 0;
   color: var(--green-dark);
   font-family: Georgia, serif;
   font-size: 22px;
 }
 
-.tactlink-panel p {
+.pengajuan-page .tactlink-panel p {
   margin: 8px 0 16px;
   color: var(--muted);
   font-size: 12.5px;
@@ -466,7 +436,7 @@
 }
 
 /* Kotak Upload */
-.upload-box {
+.pengajuan-page .upload-box {
   display: flex;
   min-height: 170px;
   flex-direction: column;
@@ -483,12 +453,12 @@
   transition: all 0.2s ease;
 }
 
-.upload-box:hover {
+.pengajuan-page .upload-box:hover {
   border-color: var(--green);
   background: var(--green-light);
 }
 
-.upload-icon {
+.pengajuan-page .upload-icon {
   display: grid;
   width: 40px;
   height: 40px;
@@ -500,33 +470,33 @@
   font-weight: bold;
 }
 
-.upload-box strong {
+.pengajuan-page .upload-box strong {
   color: var(--green-dark);
   font-size: 13px;
 }
 
-.upload-box > span:not(.upload-icon):not(.upload-hint):not(.file-name) {
+.pengajuan-page .upload-box > span:not(.upload-icon):not(.upload-hint):not(.file-name) {
   color: var(--muted);
   font-size: 11px;
 }
 
-.upload-hint {
+.pengajuan-page .upload-hint {
   color: #83948c;
   font-size: 10px;
 }
 
-.upload-box input[type="file"] {
+.pengajuan-page .upload-box input[type="file"] {
   display: none;
 }
 
-.file-name {
+.pengajuan-page .file-name {
   color: var(--green);
   font-size: 12px;
   font-weight: 700;
 }
 
 /* Checkbox & Review */
-.checkbox-row {
+.pengajuan-page .checkbox-row {
   display: flex;
   align-items: flex-start;
   gap: 12px;
@@ -536,7 +506,7 @@
   cursor: pointer;
 }
 
-.checkbox-row input {
+.pengajuan-page .checkbox-row input {
   width: 18px;
   height: 18px;
   flex: 0 0 18px;
@@ -544,7 +514,7 @@
   accent-color: var(--green);
 }
 
-.review-notice {
+.pengajuan-page .review-notice {
   display: flex;
   align-items: flex-start;
   gap: 14px;
@@ -554,7 +524,7 @@
   background: var(--green-light);
 }
 
-.review-notice > span {
+.pengajuan-page .review-notice > span {
   display: grid;
   width: 28px;
   height: 28px;
@@ -567,37 +537,37 @@
   font-weight: 800;
 }
 
-.review-notice strong {
+.pengajuan-page .review-notice strong {
   color: var(--green-dark);
   font-size: 13px;
 }
 
-.review-notice p {
+.pengajuan-page .review-notice p {
   margin: 4px 0 0;
   color: var(--muted);
   font-size: 11.5px;
 }
 
-.review-group {
+.pengajuan-page .review-group {
   padding: 16px 0;
   border-bottom: 1px solid #edf2ef;
 }
 
-.review-heading {
+.pengajuan-page .review-heading {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 12px;
 }
 
-.review-heading h3 {
+.pengajuan-page .review-heading h3 {
   margin: 0;
   color: var(--green-dark);
   font-size: 14px;
   font-weight: 700;
 }
 
-.review-heading button {
+.pengajuan-page .review-heading button {
   padding: 6px 12px;
   border: 1px solid var(--line);
   border-radius: 999px;
@@ -608,7 +578,7 @@
   cursor: pointer;
 }
 
-.review-row {
+.pengajuan-page .review-row {
   display: grid;
   grid-template-columns: minmax(140px, 0.75fr) minmax(0, 1.25fr);
   gap: 16px;
@@ -617,17 +587,17 @@
   border-bottom: 1px solid #f4f7f5;
 }
 
-.review-row span {
+.pengajuan-page .review-row span {
   color: var(--muted);
 }
 
-.review-row strong {
+.pengajuan-page .review-row strong {
   color: var(--ink);
   font-weight: 600;
 }
 
 /* Tombol Premium Rounded (Pill-shaped) */
-.form-actions {
+.pengajuan-page .form-actions {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -637,9 +607,9 @@
   border-top: 1px solid #edf2ef;
 }
 
-.primary-button,
-.previous-button,
-.secondary-button {
+.pengajuan-page .primary-button,
+.pengajuan-page .previous-button,
+.pengajuan-page .secondary-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -654,29 +624,29 @@
   transition: all 0.2s ease;
 }
 
-.primary-button {
+.pengajuan-page .primary-button {
   background: var(--green);
   color: #fff;
   border: none;
   box-shadow: 0 6px 20px rgba(27, 77, 62, 0.2);
 }
 
-.primary-button:hover {
+.pengajuan-page .primary-button:hover {
   background: var(--green-dark);
   transform: translateY(-1px);
 }
 
-.previous-button {
+.pengajuan-page .previous-button {
   background: #fff;
   color: var(--muted);
   border: 1px solid var(--line);
 }
 
-.previous-button:hover {
+.pengajuan-page .previous-button:hover {
   background: #f4f8f5;
 }
 
-.secondary-button {
+.pengajuan-page .secondary-button {
   background: var(--green);
   color: #fff;
   border: none;
@@ -686,12 +656,12 @@
   font-size: 12px;
 }
 
-.secondary-button:hover {
+.pengajuan-page .secondary-button:hover {
   background: var(--green-dark);
 }
 
 /* Success Card */
-.success-card {
+.pengajuan-page .success-card {
   width: min(100% - 32px, 640px);
   margin: -60px auto 0;
   padding: clamp(30px, 5vw, 48px);
@@ -702,7 +672,7 @@
   text-align: center;
 }
 
-.success-icon {
+.pengajuan-page .success-icon {
   display: grid;
   width: 60px;
   height: 60px;
@@ -715,7 +685,7 @@
   font-weight: 800;
 }
 
-.success-card h2 {
+.pengajuan-page .success-card h2 {
   margin: 0;
   color: var(--green-dark);
   font-family: Georgia, serif;
@@ -723,7 +693,7 @@
   font-weight: 400;
 }
 
-.code-box {
+.pengajuan-page .code-box {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -735,19 +705,19 @@
   background: #fafdfa;
 }
 
-.code-box span {
+.pengajuan-page .code-box span {
   color: var(--muted);
   font-size: 11px;
 }
 
-.code-box strong {
+.pengajuan-page .code-box strong {
   color: var(--green);
   font-family: Georgia, serif;
   font-size: clamp(24px, 4vw, 32px);
   letter-spacing: 0.05em;
 }
 
-.copy-button {
+.pengajuan-page .copy-button {
   padding: 8px 16px;
   border: 1px solid var(--line);
   border-radius: 999px;
@@ -759,11 +729,11 @@
   transition: all 0.2s ease;
 }
 
-.copy-button:hover {
+.pengajuan-page .copy-button:hover {
   background: var(--green-light);
 }
 
-.whatsapp-button {
+.pengajuan-page .whatsapp-button {
   display: inline-flex;
   min-height: 50px;
   width: 100%;
@@ -780,12 +750,12 @@
   transition: all 0.2s ease;
 }
 
-.whatsapp-button:hover {
+.pengajuan-page .whatsapp-button:hover {
   background: #20ba5a;
   transform: translateY(-1px);
 }
 
-.home-link {
+.pengajuan-page .home-link {
   display: inline-block;
   margin-top: 20px;
   color: var(--muted);
@@ -794,12 +764,12 @@
   text-decoration: none;
 }
 
-.home-link:hover {
+.pengajuan-page .home-link:hover {
   color: var(--green);
   text-decoration: underline;
 }
 
-.error-box {
+.pengajuan-page .error-box {
   margin-bottom: 20px;
   padding: 12px 16px;
   border: 1px solid #f5c6cb;
@@ -810,7 +780,7 @@
   text-align: left;
 }
 
-.footer-note {
+.pengajuan-page .footer-note {
   margin: 30px 0 0;
   color: var(--muted);
   font-size: 10.5px;
@@ -820,13 +790,13 @@
 
 /* Responsif Mobile */
 @media (max-width: 680px) {
-  .hero {
+  .pengajuan-page .hero {
     padding: 30px 20px 90px;
   }
-  .field-grid {
+  .pengajuan-page .field-grid {
     grid-template-columns: 1fr;
   }
-  .form-card {
+  .pengajuan-page .form-card {
     padding: 20px 16px;
   }
 }
