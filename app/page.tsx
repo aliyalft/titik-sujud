@@ -7,7 +7,10 @@ import CollaborationSection from "@/components/CollaborationSection";
 import GallerySection from "@/components/GallerySection";
 import CoverageSection from "@/components/CoverageSection";
 import ClosingSection from "@/components/ClosingSection";
+import { TactLinkSection } from "@/components/TactLinkSection";
 import Footer from "@/components/Footer";
+
+
 
 export default function Home() {
   return (
@@ -27,6 +30,8 @@ export default function Home() {
       <CoverageSection />
 
       <ClosingSection />
+
+      <TactLinkSection />
 
       <Footer />
     </main>

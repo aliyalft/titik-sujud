@@ -111,7 +111,7 @@ export default function PengajuanPage() {
 
     if (step === 2) {
       if (!form.tactlinkDownloaded) {
-        setErrors(["Silakan konfirmasi bahwa TactLink sudah diunduh."]);
+        setErrors(["Silakan konfirmasi bahwa TactLink sudah diunduh (wajib)."]);
         return;
       }
 
@@ -216,7 +216,7 @@ export default function PengajuanPage() {
       <main className="pengajuan-page">
         {showCopyToast && (
           <div className="toast-popup">
-            <span>✨ Nomor pengajuan berhasil disalin ke clipboard!</span>
+            <span>Nomor pengajuan berhasil disalin</span>
           </div>
         )}
 
@@ -277,7 +277,8 @@ export default function PengajuanPage() {
             target="_blank"
             rel="noreferrer"
           >
-            Lanjutkan Konfirmasi ke WhatsApp ↗
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: "8px" }}><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+            Lanjutkan Konfirmasi 
           </a>
 
           <Link href="/" className="home-link">
@@ -360,13 +361,13 @@ export default function PengajuanPage() {
 
               <h2>
                 {step === 1 && "Ceritakan tentang acara Anda"}
-                {step === 2 && "Satu langkah bersama TactLink"}
+                {step === 2 && "Unduh & Pasang Aplikasi TactLink"}
                 {step === 3 && "Periksa pengajuan Anda"}
               </h2>
 
               <p className="intro">
                 {step === 1 && "Kenali kami dengan informasi awal tentang Anda dan kegiatan yang akan diselenggarakan."}
-                {step === 2 && "Selesaikan persyaratan download TactLink sebelum mengirim pengajuan."}
+                {step === 2 && "Silakan unduh aplikasi TactLink sesuai perangkat yang Anda gunakan, unggah bukti instalasi, dan lakukan konfirmasi (wajib)."}
                 {step === 3 && "Pastikan informasi sudah benar sebelum mengirim formulir."}
               </p>
             </div>
@@ -563,53 +564,97 @@ export default function PengajuanPage() {
           {step === 2 && (
             <div className="fields">
               <div className="tactlink-panel">
-                <div className="tactlink-mark">T</div>
+                <div className="tactlink-mark">
+                  <img src="/images/tactlink.png" alt="TactLink" className="tactlink-logo-img" />
+                </div>
 
-                <div>
+                <div className="tactlink-content-area">
                   <p className="eyebrow">LANGKAH BERIKUTNYA</p>
-                  <h3>Download TactLink</h3>
+                  <h3>Unduh & Pasang Aplikasi TactLink</h3>
 
                   <p>
-                    Silakan unduh TactLink melalui tautan resmi yang disediakan. Setelah selesai, kembali ke formulir ini untuk melanjutkan pengajuan.
+                    Silakan unduh aplikasi TactLink melalui tombol di bawah ini sesuai perangkat yang Anda gunakan.
                   </p>
 
-                  <a
-                    className="secondary-button"
-                    href="https://tactlink.com"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <span>Unduh Aplikasi TactLink</span>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                  </a>
+                  <div className="tactlink-buttons-grid">
+                    <a
+                      className="tactlink-store-btn btn-tutorial"
+                      href="https://www.youtube.com/shorts/JuYtU3TVvYo"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      ▶ Cara Download
+                    </a>
+
+                    <a
+                      className="tactlink-store-btn btn-playstore"
+                      href="https://play.google.com/store/apps/details?id=com.tactlink.app&pli=1"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Google Play
+                    </a>
+
+                    <a
+                      className="tactlink-store-btn btn-appstore"
+                      href="https://apps.apple.com/id/app/tactlink/id1469516661"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      App Store
+                    </a>
+                  </div>
                 </div>
               </div>
 
-              <label className="upload-box">
-                <span className="upload-icon">↑</span>
-                <strong>Unggah bukti download</strong>
-                <span>Screenshot aplikasi setelah berhasil diunduh</span>
-                <span className="upload-hint">PNG, JPG, WEBP, atau PDF · Maksimal 5 MB</span>
+              <div className="field">
+                <span>Bukti Download TactLink <b>*</b></span>
+                <span className="intro" style={{ margin: "0 0 8px 0" }}>Unggah screenshot bukti instalasi aplikasi.</span>
 
-                <input
-                  type="file"
-                  accept="image/png,image/jpeg,image/webp,application/pdf"
-                  onChange={(e) => {
-                    const file = e.target.files?.[0] ?? null;
-                    if (file && file.size > 5 * 1024 * 1024) {
-                      update("proof", null);
-                      e.target.value = "";
-                      setErrors(["Ukuran file maksimal 5 MB."]);
-                      return;
-                    }
-                    update("proof", file);
-                  }}
-                />
+                {!form.proof ? (
+                  <label className="upload-box">
+                    <span className="upload-icon">↑</span>
+                    <strong>Unggah bukti download</strong>
+                    <span>Screenshot halaman awal / aplikasi terpasang</span>
+                    <span className="upload-hint">PNG, JPG, WEBP, atau PDF · Maksimal 5 MB</span>
 
-                {form.proof && (
-                  <span className="file-name">✓ {form.proof.name}</span>
+                    <input
+                      type="file"
+                      accept="image/png,image/jpeg,image/webp,application/pdf"
+                      onChange={(e) => {
+                        const file = e.target.files?.[0] ?? null;
+                        if (file && file.size > 5 * 1024 * 1024) {
+                          update("proof", null);
+                          e.target.value = "";
+                          setErrors(["Ukuran file maksimal 5 MB."]);
+                          return;
+                        }
+                        update("proof", file);
+                      }}
+                    />
+                  </label>
+                ) : (
+                  <div className="uploaded-file-card">
+                    <div className="uploaded-file-info">
+                      <div className="uploaded-file-icon">✓</div>
+                      <div className="uploaded-file-text">
+                        <strong className="uploaded-file-name">{form.proof.name}</strong>
+                        <span className="uploaded-file-size">
+                          {(form.proof.size / (1024 * 1024)).toFixed(2)} MB
+                        </span>
+                      </div>
+                    </div>
+                    <button
+                      type="button"
+                      className="remove-file-btn"
+                      onClick={() => update("proof", null)}
+                      title="Hapus file"
+                    >
+                      ✕
+                    </button>
+                  </div>
                 )}
-              </label>
+              </div>
 
               <label className="checkbox-row">
                 <input
@@ -617,7 +662,7 @@ export default function PengajuanPage() {
                   checked={form.tactlinkDownloaded}
                   onChange={(e) => update("tactlinkDownloaded", e.target.checked)}
                 />
-                <span>Saya telah mengunduh TactLink dan siap melanjutkan pengajuan kolaborasi.</span>
+                <span>Saya mengonfirmasi telah mengunduh aplikasi TactLink dan siap melanjutkan pengajuan kolaborasi <b>(Wajib)</b>.</span>
               </label>
             </div>
           )}
@@ -671,7 +716,7 @@ export default function PengajuanPage() {
                     Ubah
                   </button>
                 </div>
-                <ReviewRow label="Konfirmasi download" value={form.tactlinkDownloaded ? "Sudah dikonfirmasi" : "Belum"} />
+                <ReviewRow label="Konfirmasi download" value={form.tactlinkDownloaded ? "Sudah dikonfirmasi (Wajib)" : "Belum"} />
                 <ReviewRow label="Bukti download" value={form.proof?.name || "Belum ada lampiran"} />
               </div>
 
@@ -714,7 +759,6 @@ export default function PengajuanPage() {
                 disabled={isSubmitting}
               >
                 <span>Lanjut ke tahap {step + 1}</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </button>
             ) : (
               <button
@@ -724,9 +768,6 @@ export default function PengajuanPage() {
                 disabled={isSubmitting}
               >
                 {isSubmitting ? "Mengirim Pengajuan..." : "Kirim Pengajuan"}
-                {!isSubmitting && (
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                )}
               </button>
             )}
           </div>

@@ -5,14 +5,14 @@
 
 /* Kunci Variabel Warna Hanya Untuk Halaman Pengajuan */
 .pengajuan-page {
-  --green: #1b4d3e;
-  --green-dark: #0f2d24;
-  --green-light: #e6f0eb;
+  --green: #1b5e20;
+  --green-dark: #0a2d18;
+  --green-light: #eef5f1;
   --green-mint: #c7e6d6;
-  --ink: #0f231b;        /* Teks utama sangat tegas & kontras */
-  --muted: #485c52;      /* Teks sekunder yang tetap mudah dibaca */
-  --line: #cbd8d1;       /* Garis tepi & border tegas */
-  --cream: #f0f4f2;      /* Background luar sedikit lebih tebal untuk kontras card */
+  --ink: #0a2d18;        
+  --muted: #4a6352;      
+  --line: rgba(27, 94, 59, 0.15);       
+  --cream: #f4f8f6;      
 
   min-height: 100vh;
   overflow-x: hidden;
@@ -54,14 +54,22 @@
   100% { opacity: 0; transform: translate(-50%, -20px); }
 }
 
-/* Hero Section — Hijau Sage Berkarakter & Elegan */
+/* Hero Section dengan background.png & Overlay Senada Beranda */
 .pengajuan-page .hero {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  padding: 44px 24px 110px;
-  background: linear-gradient(135deg, #c3dacd 0%, #b5cebf 50%, #a6c3b1 100%);
-  color: #0d261e;
+  padding: 40px 24px 100px;
+  background-image: linear-gradient(
+    135deg, 
+    rgba(238, 245, 241, 0.92) 0%, 
+    rgba(215, 235, 224, 0.88) 50%, 
+    rgba(195, 222, 208, 0.85) 100%
+  ), url('/images/background.png');
+  background-size: cover;
+  background-position: center;
+  color: var(--ink);
+  border-bottom: 1px solid rgba(27, 94, 59, 0.1);
 }
 
 .pengajuan-page .hero::after {
@@ -71,7 +79,7 @@
   bottom: -150px;
   width: 400px;
   height: 400px;
-  border: 1px solid rgba(13, 38, 30, 0.12);
+  border: 1px solid rgba(27, 94, 59, 0.1);
   border-radius: 50%;
   content: "";
 }
@@ -81,97 +89,94 @@
   margin: 0 auto;
 }
 
-/* Tombol Kembali di Hero */
+/* Tombol Kembali Lebih Kecil & Rapi */
 .pengajuan-page .back-link {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 32px;
-  padding: 8px 18px;
+  gap: 6px;
+  margin-bottom: 24px;
+  padding: 6px 14px;
   background: #ffffff;
-  border: 1px solid rgba(27, 77, 62, 0.2);
-  box-shadow: 0 4px 12px rgba(15, 45, 36, 0.06);
+  border: 1px solid rgba(27, 94, 59, 0.2);
+  box-shadow: 0 2px 8px rgba(10, 45, 24, 0.04);
   border-radius: 999px;
-  color: #0f2d24;
-  font-size: 12px;
+  color: var(--green-dark);
+  font-size: 11.5px;
   font-weight: 700;
   text-decoration: none;
   transition: all 0.2s ease;
 }
 
 .pengajuan-page .back-link:hover {
-  background: #1b4d3e;
+  background: var(--green);
   color: #ffffff;
   transform: translateY(-1px);
 }
 
 .pengajuan-page .eyebrow {
-  margin: 0 0 12px;
-  color: #174235;
+  margin: 0 0 10px;
+  color: var(--green);
   font-size: 11px;
   font-weight: 800;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-}
-
-.pengajuan-page .hero .eyebrow {
-  color: #174235;
 }
 
 .pengajuan-page .hero h1 {
   max-width: 850px;
   margin: 0;
-  color: #0b1f19;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(36px, 5.5vw, 64px);
-  font-weight: 500;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
+  color: var(--green-dark);
+  font-family: var(--font-heading, 'Cormorant Garamond', Georgia, serif);
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
 }
 
 .pengajuan-page .hero h1 span {
-  color: #1b4d3e;
+  color: var(--green);
   font-style: italic;
+  font-weight: 400;
 }
 
 .pengajuan-page .hero-description {
   max-width: 580px;
-  margin: 20px 0 0;
-  color: #2a4036;
-  font-size: 14.5px;
+  margin: 16px 0 0;
+  color: var(--muted);
+  font-size: 14px;
   font-weight: 500;
-  line-height: 1.8;
+  line-height: 1.7;
 }
 
 .pengajuan-page .hero-note {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  margin-top: 26px;
-  padding: 8px 16px;
-  border: 1px solid rgba(27, 77, 62, 0.25);
+  gap: 8px;
+  margin-top: 22px;
+  padding: 6px 14px;
+  border: 1px solid rgba(27, 94, 59, 0.2);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(6px);
-  color: #0f2d24;
-  font-size: 10.5px;
+  color: var(--green-dark);
+  font-size: 10px;
   font-weight: 800;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
 }
 
 .pengajuan-page .note-dot {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
-  background: #1b4d3e;
-  box-shadow: 0 0 0 4px rgba(27, 77, 62, 0.2);
+  background: var(--green);
+  box-shadow: 0 0 0 3px rgba(27, 94, 59, 0.15);
 }
 
 /* Container Konten Form */
 .pengajuan-page .content {
   position: relative;
   width: min(100% - 32px, 920px);
-  margin: -60px auto 0;
+  margin: -50px auto 0;
 }
 
 /* Navigasi Progress */
@@ -182,10 +187,10 @@
   gap: 12px;
   margin-bottom: 24px;
   padding: 20px 24px;
-  border: 1px solid var(--line);
+  border: 1.5px solid var(--line);
   border-radius: 20px;
   background: #ffffff;
-  box-shadow: 0 16px 40px rgba(15, 45, 36, 0.08);
+  box-shadow: 0 16px 40px rgba(10, 45, 24, 0.06);
 }
 
 .pengajuan-page .progress-line {
@@ -194,7 +199,7 @@
   right: 18%;
   left: 18%;
   height: 2px;
-  background: #cad8d1;
+  background: #d4ebd0;
 }
 
 .pengajuan-page .progress-step {
@@ -206,40 +211,40 @@
   gap: 6px;
   border: 0;
   background: transparent;
-  color: #63776e;
+  color: #5e7065;
   cursor: pointer;
   text-align: center;
 }
 
 .pengajuan-page .step-number {
   display: grid;
-  width: 42px;
-  height: 42px;
+  width: 40px;
+  height: 40px;
   place-items: center;
-  border: 2px solid #b7c7be;
+  border: 2px solid #b5ccc0;
   border-radius: 50%;
   background: #fff;
-  color: #3b4e45;
+  color: #4a6352;
   font-size: 12px;
   font-weight: 800;
   transition: all 0.2s ease;
 }
 
 .pengajuan-page .progress-step strong {
-  color: #20362c;
+  color: var(--green-dark);
   font-size: 12px;
 }
 
 .pengajuan-page .progress-step small {
-  color: #63776e;
-  font-size: 10.5px;
+  color: var(--muted);
+  font-size: 10px;
 }
 
 .pengajuan-page .active-step .step-number {
   border-color: var(--green);
   background: var(--green);
   color: #fff;
-  box-shadow: 0 0 0 5px var(--green-light);
+  box-shadow: 0 0 0 4px var(--green-light);
 }
 
 .pengajuan-page .active-step strong,
@@ -253,13 +258,13 @@
   color: var(--green);
 }
 
-/* Card Form — Standout & Kontras */
+/* Card Form */
 .pengajuan-page .form-card {
-  padding: clamp(24px, 4vw, 42px);
-  border: 1.5px solid #c0d1c8;
+  padding: clamp(24px, 4vw, 40px);
+  border: 1.5px solid var(--line);
   border-radius: 24px;
   background: #ffffff;
-  box-shadow: 0 20px 50px rgba(15, 45, 36, 0.09);
+  box-shadow: 0 20px 50px rgba(10, 45, 24, 0.06);
 }
 
 /* Penajaman Label & Input Form */
@@ -267,25 +272,25 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  color: #0f2d24;
+  color: var(--green-dark);
   font-size: 13px;
   font-weight: 700;
 }
 
 .pengajuan-page .field b {
-  color: #d9534f;
+  color: #c62828;
 }
 
 .pengajuan-page .field input,
 .pengajuan-page .field select,
 .pengajuan-page .field textarea {
   width: 100%;
-  border: 1.5px solid #bdcbd2;
+  border: 1.5px solid rgba(27, 94, 59, 0.2);
   border-radius: 12px;
   outline: none;
   background: #ffffff;
-  color: #0b1f19;
-  padding: 13px 16px;
+  color: var(--green-dark);
+  padding: 12px 16px;
   font-size: 13.5px;
   transition: all 0.2s ease;
 }
@@ -305,20 +310,20 @@
 .pengajuan-page .section-heading {
   display: flex;
   align-items: flex-start;
-  gap: 18px;
-  margin-bottom: 32px;
-  padding-bottom: 24px;
-  border-bottom: 1px solid #edf2ef;
+  gap: 16px;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(27, 94, 59, 0.1);
 }
 
 .pengajuan-page .section-number {
   display: grid;
-  width: 48px;
-  height: 48px;
-  flex: 0 0 48px;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
   place-items: center;
-  border: 1px solid #c2e2d0;
-  border-radius: 16px;
+  border: 1px solid rgba(27, 94, 59, 0.2);
+  border-radius: 14px;
   background: var(--green-light);
   color: var(--green);
   font-size: 13px;
@@ -328,17 +333,17 @@
 .pengajuan-page .section-heading h2 {
   margin: 0;
   color: var(--green-dark);
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(24px, 3.5vw, 34px);
-  font-weight: 400;
+  font-family: var(--font-heading, 'Cormorant Garamond', Georgia, serif);
+  font-size: clamp(22px, 3.2vw, 32px);
+  font-weight: 600;
   line-height: 1.2;
 }
 
 .pengajuan-page .intro {
-  margin: 8px 0 0;
+  margin: 6px 0 0;
   color: var(--muted);
-  font-size: 13px;
-  line-height: 1.8;
+  font-size: 12.5px;
+  line-height: 1.7;
 }
 
 .pengajuan-page .fields {
@@ -352,16 +357,16 @@
   align-items: flex-start;
   gap: 14px;
   padding-bottom: 12px;
-  border-bottom: 1px solid #edf2ef;
+  border-bottom: 1px solid rgba(27, 94, 59, 0.08);
 }
 
 .pengajuan-page .subsection-title > span {
   display: grid;
-  width: 32px;
-  height: 32px;
-  flex: 0 0 32px;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
   place-items: center;
-  border-radius: 10px;
+  border-radius: 8px;
   background: var(--green-light);
   color: var(--green);
   font-size: 11px;
@@ -371,20 +376,20 @@
 .pengajuan-page .subsection-title h3 {
   margin: 0;
   color: var(--green-dark);
-  font-size: 14.5px;
+  font-size: 14px;
   font-weight: 700;
 }
 
 .pengajuan-page .subsection-title p {
-  margin: 4px 0 0;
+  margin: 2px 0 0;
   color: var(--muted);
-  font-size: 11.5px;
+  font-size: 11px;
 }
 
 .pengajuan-page .field-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
+  gap: 18px;
 }
 
 .pengajuan-page .full-width {
@@ -392,62 +397,61 @@
 }
 
 .pengajuan-page .helper {
-  color: #83948c;
+  color: #72877d;
   font-size: 11px;
-  font-weight: 400;
 }
 
 /* Panel TactLink */
 .pengajuan-page .tactlink-panel {
   display: grid;
-  grid-template-columns: 60px minmax(0, 1fr);
-  gap: 20px;
-  padding: 24px;
-  border: 1px solid #d4ebd0;
-  border-radius: 20px;
+  grid-template-columns: 56px minmax(0, 1fr);
+  gap: 18px;
+  padding: 22px;
+  border: 1px solid rgba(27, 94, 59, 0.2);
+  border-radius: 18px;
   background: linear-gradient(135deg, #f7fbf6, #edf5eb);
 }
 
 .pengajuan-page .tactlink-mark {
   display: grid;
-  width: 56px;
-  height: 56px;
+  width: 52px;
+  height: 52px;
   place-items: center;
-  border-radius: 16px;
+  border-radius: 14px;
   background: var(--green);
   color: #fff;
   font-family: Georgia, serif;
-  font-size: 26px;
+  font-size: 24px;
   font-weight: 700;
 }
 
 .pengajuan-page .tactlink-panel h3 {
   margin: 0;
   color: var(--green-dark);
-  font-family: Georgia, serif;
-  font-size: 22px;
+  font-family: var(--font-heading, 'Cormorant Garamond', Georgia, serif);
+  font-size: 20px;
 }
 
 .pengajuan-page .tactlink-panel p {
-  margin: 8px 0 16px;
+  margin: 6px 0 14px;
   color: var(--muted);
-  font-size: 12.5px;
-  line-height: 1.7;
+  font-size: 12px;
+  line-height: 1.6;
 }
 
 /* Kotak Upload */
 .pengajuan-page .upload-box {
   display: flex;
-  min-height: 170px;
+  min-height: 160px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 24px;
-  border: 2px dashed #b5ccc0;
-  border-radius: 18px;
+  gap: 6px;
+  padding: 20px;
+  border: 2px dashed rgba(27, 94, 59, 0.25);
+  border-radius: 16px;
   background: #fafdfa;
-  color: #52665e;
+  color: var(--muted);
   text-align: center;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -460,28 +464,28 @@
 
 .pengajuan-page .upload-icon {
   display: grid;
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   place-items: center;
-  border-radius: 12px;
+  border-radius: 10px;
   background: var(--green-light);
   color: var(--green);
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
 }
 
 .pengajuan-page .upload-box strong {
   color: var(--green-dark);
-  font-size: 13px;
+  font-size: 12.5px;
 }
 
 .pengajuan-page .upload-box > span:not(.upload-icon):not(.upload-hint):not(.file-name) {
   color: var(--muted);
-  font-size: 11px;
+  font-size: 10.5px;
 }
 
 .pengajuan-page .upload-hint {
-  color: #83948c;
+  color: #72877d;
   font-size: 10px;
 }
 
@@ -491,7 +495,7 @@
 
 .pengajuan-page .file-name {
   color: var(--green);
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 700;
 }
 
@@ -500,16 +504,16 @@
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  color: #41544c;
-  font-size: 12.5px;
-  line-height: 1.7;
+  color: var(--green-dark);
+  font-size: 12px;
+  line-height: 1.6;
   cursor: pointer;
 }
 
 .pengajuan-page .checkbox-row input {
-  width: 18px;
-  height: 18px;
-  flex: 0 0 18px;
+  width: 17px;
+  height: 17px;
+  flex: 0 0 17px;
   margin-top: 2px;
   accent-color: var(--green);
 }
@@ -518,73 +522,73 @@
   display: flex;
   align-items: flex-start;
   gap: 14px;
-  padding: 18px;
-  border: 1px solid #d4ebd0;
-  border-radius: 16px;
+  padding: 16px;
+  border: 1px solid rgba(27, 94, 59, 0.2);
+  border-radius: 14px;
   background: var(--green-light);
 }
 
 .pengajuan-page .review-notice > span {
   display: grid;
-  width: 28px;
-  height: 28px;
-  flex: 0 0 28px;
+  width: 26px;
+  height: 26px;
+  flex: 0 0 26px;
   place-items: center;
   border-radius: 50%;
   background: var(--green);
   color: #fff;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 800;
 }
 
 .pengajuan-page .review-notice strong {
   color: var(--green-dark);
-  font-size: 13px;
+  font-size: 12.5px;
 }
 
 .pengajuan-page .review-notice p {
-  margin: 4px 0 0;
+  margin: 2px 0 0;
   color: var(--muted);
-  font-size: 11.5px;
+  font-size: 11px;
 }
 
 .pengajuan-page .review-group {
-  padding: 16px 0;
-  border-bottom: 1px solid #edf2ef;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(27, 94, 59, 0.08);
 }
 
 .pengajuan-page .review-heading {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .pengajuan-page .review-heading h3 {
   margin: 0;
   color: var(--green-dark);
-  font-size: 14px;
+  font-size: 13.5px;
   font-weight: 700;
 }
 
 .pengajuan-page .review-heading button {
-  padding: 6px 12px;
+  padding: 4px 10px;
   border: 1px solid var(--line);
   border-radius: 999px;
   background: #fff;
   color: var(--green);
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 700;
   cursor: pointer;
 }
 
 .pengajuan-page .review-row {
   display: grid;
-  grid-template-columns: minmax(140px, 0.75fr) minmax(0, 1.25fr);
-  gap: 16px;
-  padding: 8px 0;
-  font-size: 12px;
-  border-bottom: 1px solid #f4f7f5;
+  grid-template-columns: minmax(130px, 0.75fr) minmax(0, 1.25fr);
+  gap: 14px;
+  padding: 6px 0;
+  font-size: 11.5px;
+  border-bottom: 1px solid rgba(27, 94, 59, 0.04);
 }
 
 .pengajuan-page .review-row span {
@@ -592,19 +596,19 @@
 }
 
 .pengajuan-page .review-row strong {
-  color: var(--ink);
+  color: var(--green-dark);
   font-weight: 600;
 }
 
-/* Tombol Premium Rounded (Pill-shaped) */
+/* Tombol Aksi Tanpa Panah */
 .pengajuan-page .form-actions {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 14px;
-  margin-top: 36px;
-  padding-top: 24px;
-  border-top: 1px solid #edf2ef;
+  gap: 12px;
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(27, 94, 59, 0.08);
 }
 
 .pengajuan-page .primary-button,
@@ -613,11 +617,11 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  min-height: 48px;
-  padding: 0 24px;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 22px;
   border-radius: 999px;
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 700;
   text-decoration: none;
   cursor: pointer;
@@ -628,7 +632,7 @@
   background: var(--green);
   color: #fff;
   border: none;
-  box-shadow: 0 6px 20px rgba(27, 77, 62, 0.2);
+  box-shadow: 0 4px 16px rgba(27, 94, 59, 0.2);
 }
 
 .pengajuan-page .primary-button:hover {
@@ -644,6 +648,7 @@
 
 .pengajuan-page .previous-button:hover {
   background: #f4f8f5;
+  color: var(--green-dark);
 }
 
 .pengajuan-page .secondary-button {
@@ -651,9 +656,9 @@
   color: #fff;
   border: none;
   width: fit-content;
-  min-height: 42px;
-  padding: 0 18px;
-  font-size: 12px;
+  min-height: 38px;
+  padding: 0 16px;
+  font-size: 11.5px;
 }
 
 .pengajuan-page .secondary-button:hover {
@@ -663,67 +668,67 @@
 /* Success Card */
 .pengajuan-page .success-card {
   width: min(100% - 32px, 640px);
-  margin: -60px auto 0;
-  padding: clamp(30px, 5vw, 48px);
-  border: 1px solid var(--line);
+  margin: -50px auto 0;
+  padding: clamp(28px, 4.5vw, 44px);
+  border: 1.5px solid var(--line);
   border-radius: 24px;
   background: #fff;
-  box-shadow: 0 20px 50px rgba(27, 77, 62, 0.08);
+  box-shadow: 0 20px 50px rgba(10, 45, 24, 0.06);
   text-align: center;
 }
 
 .pengajuan-page .success-icon {
   display: grid;
-  width: 60px;
-  height: 60px;
-  margin: 0 auto 20px;
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 16px;
   place-items: center;
-  border-radius: 20px;
+  border-radius: 18px;
   background: var(--green-light);
   color: var(--green);
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 800;
 }
 
 .pengajuan-page .success-card h2 {
   margin: 0;
   color: var(--green-dark);
-  font-family: Georgia, serif;
-  font-size: clamp(26px, 4vw, 38px);
-  font-weight: 400;
+  font-family: var(--font-heading, 'Cormorant Garamond', Georgia, serif);
+  font-size: clamp(24px, 3.5vw, 36px);
+  font-weight: 600;
 }
 
 .pengajuan-page .code-box {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
-  margin: 24px 0;
-  padding: 24px;
-  border: 2px dashed #b5ccc0;
-  border-radius: 18px;
+  gap: 6px;
+  margin: 20px 0;
+  padding: 20px;
+  border: 2px dashed rgba(27, 94, 59, 0.25);
+  border-radius: 16px;
   background: #fafdfa;
 }
 
 .pengajuan-page .code-box span {
   color: var(--muted);
-  font-size: 11px;
+  font-size: 10.5px;
 }
 
 .pengajuan-page .code-box strong {
   color: var(--green);
   font-family: Georgia, serif;
-  font-size: clamp(24px, 4vw, 32px);
+  font-size: clamp(22px, 3.5vw, 30px);
   letter-spacing: 0.05em;
 }
 
 .pengajuan-page .copy-button {
-  padding: 8px 16px;
+  padding: 6px 14px;
   border: 1px solid var(--line);
   border-radius: 999px;
   background: #fff;
   color: var(--green);
-  font-size: 11.5px;
+  font-size: 11px;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -735,18 +740,18 @@
 
 .pengajuan-page .whatsapp-button {
   display: inline-flex;
-  min-height: 50px;
+  min-height: 46px;
   width: 100%;
   align-items: center;
   justify-content: center;
-  padding: 0 24px;
+  padding: 0 20px;
   border-radius: 999px;
   background: #25d366;
   color: #fff;
-  font-size: 13.5px;
+  font-size: 13px;
   font-weight: 700;
   text-decoration: none;
-  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.25);
+  box-shadow: 0 6px 16px rgba(37, 211, 102, 0.2);
   transition: all 0.2s ease;
 }
 
@@ -757,9 +762,9 @@
 
 .pengajuan-page .home-link {
   display: inline-block;
-  margin-top: 20px;
+  margin-top: 16px;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 700;
   text-decoration: none;
 }
@@ -770,33 +775,180 @@
 }
 
 .pengajuan-page .error-box {
-  margin-bottom: 20px;
-  padding: 12px 16px;
+  margin-bottom: 18px;
+  padding: 10px 14px;
   border: 1px solid #f5c6cb;
-  border-radius: 12px;
+  border-radius: 10px;
   background: #f8d7da;
   color: #721c24;
-  font-size: 12.5px;
+  font-size: 12px;
   text-align: left;
 }
 
 .pengajuan-page .footer-note {
-  margin: 30px 0 0;
+  margin: 24px 0 0;
   color: var(--muted);
-  font-size: 10.5px;
+  font-size: 10px;
   letter-spacing: 0.03em;
   text-align: center;
 }
 
-/* Responsif Mobile */
+/* Responsif Mobile Khusus */
 @media (max-width: 680px) {
   .pengajuan-page .hero {
-    padding: 30px 20px 90px;
+    padding: 30px 16px 80px;
   }
+  
+  .pengajuan-page .back-link {
+    padding: 5px 12px;
+    font-size: 11px;
+    margin-bottom: 18px;
+  }
+
   .pengajuan-page .field-grid {
     grid-template-columns: 1fr;
   }
+
   .pengajuan-page .form-card {
-    padding: 20px 16px;
+    padding: 18px 14px;
   }
+
+  .pengajuan-page .progress {
+    padding: 14px 12px;
+  }
+
+  .pengajuan-page .step-number {
+    width: 34px;
+    height: 34px;
+    font-size: 11px;
+  }
+}
+
+/* ==========================================
+   TACTLINK SECTION & DOWNLOAD BUTTONS
+   ========================================== */
+
+.tactlink-logo-img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  background-color: #ffffff; /* Memastikan background logo menjadi putih bersih */
+  border-radius: 8px;        /* Opsional: membuat sudutnya melengkung rapi */
+  padding: 2px;              /* Opsional: memberi sedikit ruang di dalam */
+}
+
+.tactlink-buttons-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.tactlink-store-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-tutorial {
+  background: #ffffff;
+  color: var(--green-dark);
+  border: 1.5px solid rgba(27, 94, 59, 0.25);
+}
+
+.btn-tutorial:hover {
+  background: var(--green-light);
+}
+
+/* Tombol Download TactLink Berwarna Hijau Senada */
+.btn-playstore,
+.btn-appstore {
+  background: #1b5e20 !important;
+  color: #ffffff !important;
+  border: none !important;
+  box-shadow: 0 4px 16px rgba(27, 94, 59, 0.25) !important;
+}
+
+.btn-playstore:hover,
+.btn-appstore:hover {
+  background: #0a2d18 !important;
+  transform: translateY(-1px);
+}
+
+/* File Terunggah dengan Tombol X */
+.uploaded-file-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 14px 18px;
+  background: #f0f7f2;
+  border: 1.5px solid rgba(27, 94, 59, 0.2);
+  border-radius: 14px;
+  margin-top: 12px;
+}
+
+.uploaded-file-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.uploaded-file-icon {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  place-items: center;
+  background: #e6f2eb;
+  color: var(--green);
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.uploaded-file-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.uploaded-file-name {
+  color: var(--green-dark);
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.uploaded-file-size {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.remove-file-btn {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  place-items: center;
+  background: #fdf2f2;
+  color: #c62828;
+  border: 1px solid rgba(198, 40, 40, 0.2);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.remove-file-btn:hover {
+  background: #c62828;
+  color: #ffffff;
 }
