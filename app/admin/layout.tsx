@@ -1,6 +1,6 @@
 "use client";
 
-import type { ReactNode } from "react";
+import { type ReactNode, Suspense } from "react";
 import { usePathname } from "next/navigation";
 import AdminSidebar from "@/components/admin/AdminSidebar";
 import "@/components/admin/admin.css";
@@ -19,11 +19,13 @@ export default function AdminLayout({
   }
 
   return (
-    <main className="admin-shell">
-      <AdminSidebar />
-      <div style={{ flex: 1, minWidth: 0 }}>
-        {children}
-      </div>
-    </main>
+    <Suspense fallback={<div style={{ padding: "40px", textAlign: "center" }}>Memuat halaman admin...</div>}>
+      <main className="admin-shell">
+        <AdminSidebar />
+        <div style={{ flex: 1, minWidth: 0 }}>
+          {children}
+        </div>
+      </main>
+    </Suspense>
   );
 }
