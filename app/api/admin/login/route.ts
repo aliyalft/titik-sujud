@@ -22,12 +22,12 @@ export async function POST(request: Request) {
 
     if (!supabaseUrl || !supabaseAnonKey) {
       return NextResponse.json(
-        { message: "Konfigurasi Supabase belum lengkap." },
+        { message: "Konfigurasi Supabase belum lengkap di Vercel (URL/Key kosong)." },
         { status: 500 }
       );
     }
 
-    // Buat penampung untuk cookies yang akan diset oleh Supabase
+    // Penampung cookie dari Supabase
     let cookiesToSetOnResponse: Array<{ name: string; value: string; options: any }> = [];
 
     const supabase = createServerClient(
@@ -58,50 +58,62 @@ export async function POST(request: Request) {
               });
           },
           setAll(cookiesToSet) {
-            // Simpan cookie ke dalam array sementara
             cookiesToSetOnResponse = cookiesToSet;
           },
         },
       }
     );
 
+    // 1. Proses Sign In ke Supabase
     const { data, error } =
       await supabase.auth.signInWithPassword({
         email,
         password,
       });
 
+    // 🛑 JIKA LOGIN GAGAL DI SUPABASE
     if (error || !data.user) {
+      console.error("DEBUG SUPABASE AUTH ERROR:", error);
       return NextResponse.json(
-        { message: "Email atau password tidak sesuai." },
+        { 
+          message: `Gagal Supabase: ${error?.message || "User tidak ditemukan."}` 
+        },
         { status: 401 }
       );
     }
 
-    if (data.user.app_metadata?.role !== "admin") {
+    // 2. Cek Role Admin (Mengakomodasi baik app_metadata maupun raw_app_meta_data)
+    const userRole = 
+      data.user.app_metadata?.role || 
+      (data.user as any).raw_app_meta_data?.role;
+
+    if (userRole !== "admin") {
       await supabase.auth.signOut();
 
+      console.warn("DEBUG ROLE ERROR: Role terdeteksi sebagai:", userRole);
       return NextResponse.json(
-        { message: "Akun ini tidak memiliki akses admin." },
+        { 
+          message: `Akun ini tidak memiliki akses admin (Role saat ini: "${userRole || 'tidak ada'}").` 
+        },
         { status: 403 }
       );
     }
 
-    // 1. Buat response BERHASIL setelah proses auth selesai
+    // 3. Jika berhasil, buat Response dan tempelkan Cookie
     const response = NextResponse.json({
       message: "Login berhasil.",
     });
 
-    // 2. Masukkan semua cookie auth Supabase ke dalam response Vercel secara aman
     cookiesToSetOnResponse.forEach(({ name, value, options }) => {
       response.cookies.set(name, value, options);
     });
 
     return response;
-  } catch {
+  } catch (err: any) {
+    console.error("DEBUG INTERNAL SERVER ERROR:", err);
     return NextResponse.json(
-      { message: "Permintaan login tidak valid." },
-      { status: 400 }
+      { message: `Permintaan login tidak valid: ${err?.message || "Unknown error"}` },
+      { status: 500 }
     );
   }
 }
