@@ -1,12 +1,10 @@
-
 "use client";
 
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import InstagramIcon from "./InstagramIcon";
 
-
-const INSTAGRAM_URL = "https://www.instagram.com/";
+const INSTAGRAM_URL = "https://www.instagram.com/titiksujud_/";
 
 const navigation = [
   { label: "Tentang Kami", href: "#tentang" },
@@ -25,7 +23,17 @@ export default function Navbar() {
 
   return (
     <header className="site-header">
-      <div className="nav-inner">
+      <div 
+        className="nav-inner"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          width: "100%",
+          position: "relative",
+        }}
+      >
+        {/* Logo (Kiri) */}
         <a
           className="brand"
           href="#beranda"
@@ -46,6 +54,7 @@ export default function Navbar() {
           </span>
         </a>
 
+        {/* Tombol Toggle Menu Mobile */}
         <button
           className="menu-toggle"
           type="button"
@@ -56,9 +65,16 @@ export default function Navbar() {
           {menuOpen ? <X size={21} /> : <Menu size={21} />}
         </button>
 
+        {/* Menu Navigasi Utama (Di Tengah secara Desktop) */}
         <nav
           className={`nav-links ${menuOpen ? "nav-open" : ""}`}
           aria-label="Navigasi utama"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "24px",
+            margin: "0 auto", // Kunci agar menu berada di tengah area header
+          }}
         >
           {navigation.map((item) => (
             <a
@@ -82,9 +98,11 @@ export default function Navbar() {
             <span>Instagram</span>
           </a>
 
+          {/* Tombol Ajukan Kolaborasi (Paling Kanan / Ikut di menu mobile) */}
           <a
             href="/pengajuan"
             className="button button-primary nav-cta"
+            style={{ textDecoration: "none" }}
             onClick={closeMenu}
           >
             Ajukan Kolaborasi

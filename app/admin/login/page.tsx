@@ -5,6 +5,7 @@ import { useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { Leaf, LockKeyhole, Mail } from "lucide-react";
 import "./login.css";
+import Image from "next/image";
 
 export default function AdminLoginPage() {
   const router = useRouter();
@@ -45,7 +46,15 @@ export default function AdminLoginPage() {
     <main className="admin-login">
       <section className="login-card">
         <div className="login-brand">
-          <span className="login-logo"><Leaf size={26} /></span>
+          <span className="login-logo">
+        <Image 
+          src="/images/logo.png" 
+          alt="Logo Titik Sujud" 
+          width={26} 
+          height={26} 
+          style={{ objectFit: "contain" }}
+        />
+        </span>
           <span>
             <strong>Titik Sujud</strong>
             <small>ADMINISTRATION PORTAL</small>

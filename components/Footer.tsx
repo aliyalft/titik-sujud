@@ -110,7 +110,7 @@ export default function Footer() {
           </span>
 
           {/* Tambahan SEO untuk Mentor (Samar/Hampir tidak terlihat) */}
-          <span style={{ fontSize: "10px", opacity: 0.25, marginTop: "4px" }}>
+          <span style={{ fontSize: "10px", opacity: 0, marginTop: "4px" }}>
             Willy BD Lead Tactlink
           </span>
         </div>

@@ -572,16 +572,16 @@ h1, h2, h3, .heading-serif {
    ========================================== */
 
 .intro-section {
-  padding: 90px 0;
+  padding: 80px 0;
   background-color: var(--bg-light, #f8faf8);
   position: relative;
 }
 
-/* Grid Utama Tentang Kami */
+/* Grid Utama Tentang Kami (Dibuat auto pada kolom 1 agar tidak terlalu makan tempat) */
 .intro-grid {
   display: grid;
-  grid-template-columns: 0.8fr 1.4fr 1.2fr;
-  gap: 40px;
+  grid-template-columns: auto 1.2fr 1fr;
+  gap: 32px;
   align-items: start;
 }
 
@@ -589,6 +589,7 @@ h1, h2, h3, .heading-serif {
 .intro-label {
   display: flex;
   align-items: flex-start;
+  padding-top: 6px; /* Menyelaraskan posisi atas dengan judul */
 }
 
 .section-kicker {
@@ -600,6 +601,7 @@ h1, h2, h3, .heading-serif {
   letter-spacing: 2px;
   color: var(--brand-green-primary, #52c234);
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .section-number {
@@ -620,6 +622,7 @@ h1, h2, h3, .heading-serif {
   font-weight: 600;
   line-height: 1.18;
   color: var(--brand-green-dark, #0a2d18);
+  margin-top: 0;
   margin-bottom: 20px;
 }
 
@@ -770,20 +773,29 @@ h1, h2, h3, .heading-serif {
 }
 
 /* ==========================================
-   RESPONSIVE (MOBILE & TABLET)
+   RESPONSIVE (MOBILE & TABLET FIX)
    ========================================== */
 @media (max-width: 968px) {
+  .intro-section {
+    padding: 50px 0;
+  }
+
   .intro-grid {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 16px; /* Memperdekat jarak antara label, h1, dan gambar */
   }
 
   .intro-label {
-    margin-bottom: -10px;
+    padding-top: 0;
+    margin-bottom: 4px; /* Menempel dekat dengan h1 */
+  }
+
+  .intro-copy .section-heading {
+    margin-bottom: 16px;
   }
 
   .intro-visual {
-    margin-top: 20px;
+    margin-top: 16px;
   }
 
   .intro-caption {
@@ -794,7 +806,7 @@ h1, h2, h3, .heading-serif {
   .about-values {
     grid-template-columns: 1fr;
     gap: 16px;
-    margin-top: 50px;
+    margin-top: 40px;
   }
 }
 
