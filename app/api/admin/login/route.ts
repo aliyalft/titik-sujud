@@ -1,4 +1,3 @@
-
 import { NextResponse } from "next/server";
 import { createServerClient } from "@supabase/ssr";
 
@@ -18,10 +17,6 @@ export async function POST(request: Request) {
       );
     }
 
-    const response = NextResponse.json({
-      message: "Login berhasil.",
-    });
-
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
     const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
@@ -31,6 +26,9 @@ export async function POST(request: Request) {
         { status: 500 }
       );
     }
+
+    // Buat penampung untuk cookies yang akan diset oleh Supabase
+    let cookiesToSetOnResponse: Array<{ name: string; value: string; options: any }> = [];
 
     const supabase = createServerClient(
       supabaseUrl,
@@ -60,9 +58,8 @@ export async function POST(request: Request) {
               });
           },
           setAll(cookiesToSet) {
-            cookiesToSet.forEach(({ name, value, options }) => {
-              response.cookies.set(name, value, options);
-            });
+            // Simpan cookie ke dalam array sementara
+            cookiesToSetOnResponse = cookiesToSet;
           },
         },
       }
@@ -89,6 +86,16 @@ export async function POST(request: Request) {
         { status: 403 }
       );
     }
+
+    // 1. Buat response BERHASIL setelah proses auth selesai
+    const response = NextResponse.json({
+      message: "Login berhasil.",
+    });
+
+    // 2. Masukkan semua cookie auth Supabase ke dalam response Vercel secara aman
+    cookiesToSetOnResponse.forEach(({ name, value, options }) => {
+      response.cookies.set(name, value, options);
+    });
 
     return response;
   } catch {
