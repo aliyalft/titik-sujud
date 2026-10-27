@@ -46,7 +46,7 @@ const initialForm: FormData = {
 
 const steps = [
   { number: "01", title: "Data Pengaju", subtitle: "Informasi diri & acara" },
-  { number: "02", title: "TactLink", subtitle: "Download & verifikasi" },
+  { number: "02", title: "TactLink", subtitle: "Unduh aplikasi" },
   { number: "03", title: "Konfirmasi", subtitle: "Periksa pengajuan" },
 ];
 
@@ -367,7 +367,7 @@ export default function PengajuanPage() {
 
               <p className="intro">
                 {step === 1 && "Kenali kami dengan informasi awal tentang Anda dan kegiatan yang akan diselenggarakan."}
-                {step === 2 && "Silakan unduh aplikasi TactLink sesuai perangkat yang Anda gunakan, unggah bukti instalasi, dan lakukan konfirmasi (wajib)."}
+                {step === 2 && "Silakan unduh dan pasang aplikasi TactLink pada perangkat yang Anda gunakan. Aplikasi ini mendukung kemudahan bertukar informasi kontak dan memperluas jejaring antarpeserta secara digital, sehingga silaturahmi dan peluang kolaborasi dapat terus terjalin setelah kegiatan."}
                 {step === 3 && "Pastikan informasi sudah benar sebelum mengirim formulir."}
               </p>
             </div>
@@ -384,7 +384,7 @@ export default function PengajuanPage() {
           {step === 1 && (
             <div className="fields">
               <div className="subsection-title">
-                <span>01</span>
+                <span>A</span>
                 <div>
                   <h3>Data pengaju</h3>
                   <p>Informasi kontak untuk koordinasi lebih lanjut.</p>
@@ -454,7 +454,7 @@ export default function PengajuanPage() {
               </div>
 
               <div className="subsection-title">
-                <span>02</span>
+                <span>B</span>
                 <div>
                   <h3>Informasi acara</h3>
                   <p>Gambaran awal kegiatan dan kebutuhan fasilitas.</p>
@@ -573,7 +573,7 @@ export default function PengajuanPage() {
                   <h3>Unduh & Pasang Aplikasi TactLink</h3>
 
                   <p>
-                    Silakan unduh aplikasi TactLink melalui tombol di bawah ini sesuai perangkat yang Anda gunakan.
+                    Unduh aplikasi TactLink melalui tombol di bawah ini sesuai perangkat Anda. Setelah berhasil memasang aplikasi, unggah tangkapan layar sebagai bukti instalasi dan centang konfirmasi untuk melanjutkan pengajuan kolaborasi.
                   </p>
 
                   <div className="tactlink-buttons-grid">
@@ -662,7 +662,7 @@ export default function PengajuanPage() {
                   checked={form.tactlinkDownloaded}
                   onChange={(e) => update("tactlinkDownloaded", e.target.checked)}
                 />
-                <span>Saya mengonfirmasi telah mengunduh aplikasi TactLink dan siap melanjutkan pengajuan kolaborasi <b>(Wajib)</b>.</span>
+                <span>Saya mengonfirmasi telah mengunduh aplikasi TactLink dan siap melanjutkan pengajuan kolaborasi</span>
               </label>
             </div>
           )}
@@ -747,7 +747,7 @@ export default function PengajuanPage() {
               </button>
             ) : (
               <span className="step-hint">
-                <b>*</b> Wajib diisi
+                <b>* Wajib diisi </b>
               </span>
             )}
 

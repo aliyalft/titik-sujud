@@ -8,17 +8,17 @@ const INSTAGRAM_URL = "https://www.instagram.com/";
 
 const gallery = [
   {
-    image: "/images/dokumentasi/makassar-1.jpg",
+    image: "./images/foto3.png",
     location: "Makassar",
     title: "Ruang Ibadah di Tengah Kegiatan",
   },
   {
-    image: "/images/dokumentasi/bandung-1.jpg",
+    image: "./images/foto1.png",
     location: "Bandung",
     title: "Hadir untuk Pengunjung",
   },
   {
-    image: "/images/dokumentasi/medan-1.jpg",
+    image: "./images/foto2.png",
     location: "Medan",
     title: "Mendekatkan Ruang Sujud",
   },

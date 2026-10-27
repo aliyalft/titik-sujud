@@ -2,9 +2,11 @@
 
 import InstagramIcon from "./InstagramIcon";
 import { Mail, MapPin, MessageSquare } from "lucide-react";
+import Image from "next/image";
 
-const INSTAGRAM_URL = "https://www.instagram.com/";
+const INSTAGRAM_URL = "https://www.instagram.com/titiksujud_/";
 const WHATSAPP_URL = "https://wa.me/";
+const LINKEDIN_URL = "https://www.linkedin.com/in/aliyahalfitarossa/";
 
 export default function Footer() {
   return (
@@ -76,16 +78,41 @@ export default function Footer() {
                 aria-label="Instagram Titik Sujud"
               >
                 <InstagramIcon size={18} />
-                <span>@titiksujud.id</span>
+                <span>@titiksujud_</span>
               </a>
             </div>
           </div>
         </div>
 
         {/* Baris Bawah / Copyright */}
-        <div className="footer-bottom">
+        <div className="footer-bottom" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "8px", textAlign: "center" }}>
           <span>&copy; 2026 Titik Sujud. Hak Cipta Dilindungi.</span>
-          <span>Menghadirkan ruang ibadah, menebarkan kebaikan.</span>
+          <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+            <span>Powered by</span>
+            <Image 
+              src="/images/tactlink.png" 
+              alt="TactLink" 
+              width={20} 
+              height={20} 
+              style={{ filter: "brightness(0) invert(1)" }} 
+            />
+          </div>
+          <span>
+            Dev by{" "}
+            <a 
+              href={LINKEDIN_URL} 
+              target="_blank" 
+              rel="noreferrer" 
+              style={{ color: "inherit", fontWeight: 600, textDecoration: "underline" }}
+            >
+              Aliyah Alfita Rossa
+            </a>
+          </span>
+
+          {/* Tambahan SEO untuk Mentor (Samar/Hampir tidak terlihat) */}
+          <span style={{ fontSize: "10px", opacity: 0.25, marginTop: "4px" }}>
+            Willy BD Lead Tactlink
+          </span>
         </div>
       </div>
     </footer>

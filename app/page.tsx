@@ -6,6 +6,7 @@ import FacilitiesSection from "@/components/FacilitiesSection";
 import CollaborationSection from "@/components/CollaborationSection";
 import GallerySection from "@/components/GallerySection";
 import CoverageSection from "@/components/CoverageSection";
+import ServiceAreas from "@/components/ServiceAreas";
 import ClosingSection from "@/components/ClosingSection";
 import { TactLinkSection } from "@/components/TactLinkSection";
 import Footer from "@/components/Footer";
@@ -28,6 +29,8 @@ export default function Home() {
       <GallerySection />
 
       <CoverageSection />
+
+      <ServiceAreas />
 
       <ClosingSection />
 

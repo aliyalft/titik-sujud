@@ -8,7 +8,7 @@ import {
   CheckCircle2,
 } from "lucide-react";
 
-const WHATSAPP_URL = "https://wa.me/";
+const WHATSAPP_URL = "https://wa.me/+6281910407030";
 
 const steps = [
   {

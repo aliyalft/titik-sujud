@@ -1,22 +1,27 @@
+
 "use client";
 
 import { useState, useRef } from "react";
-import { HeartHandshake, ArrowRight, Play, Pause } from "lucide-react";
-
+import { HeartHandshake, Play, Pause } from "lucide-react";
 
 export default function HeroSection() {
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
-  const handlePlayVideo = () => {
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause();
-        setIsPlaying(false);
-      } else {
-        videoRef.current.play();
-        setIsPlaying(true);
-      }
+  const handlePlayVideo = async () => {
+    const video = videoRef.current;
+
+    if (!video) return;
+
+    if (!video.paused) {
+      video.pause();
+      return;
+    }
+
+    try {
+      await video.play();
+    } catch (error) {
+      console.error("Video gagal diputar:", error);
     }
   };
 
@@ -29,7 +34,9 @@ export default function HeroSection() {
         <div className="hero-text-content">
           <div className="hero-pill-tag">
             <span className="pill-dot" />
-            <span className="pill-text">TITIK SUJUD · MUSHOLLA PORTABLE</span>
+            <span className="pill-text">
+              TITIK SUJUD · MUSHOLLA PORTABLE
+            </span>
           </div>
 
           <h1 className="hero-title">
@@ -38,8 +45,9 @@ export default function HeroSection() {
           </h1>
 
           <p className="hero-description">
-            Menghadirkan fasilitas musholla portable secara gratis untuk berbagai
-            kegiatan dan acara publik, agar setiap orang tetap nyaman beribadah di tengah kesibukan.
+            Menghadirkan fasilitas musholla portable secara gratis untuk
+            berbagai kegiatan dan acara publik, agar setiap orang tetap
+            nyaman beribadah di tengah kesibukan.
           </p>
 
           <div className="hero-cta-group">
@@ -50,30 +58,38 @@ export default function HeroSection() {
 
             <a href="#tentang" className="btn-secondary">
               <span>Kenali Titik Sujud</span>
-             
             </a>
           </div>
         </div>
 
-        {/* Frame Arch Kubah untuk Video */}
+        {/* Video Hero */}
         <div className="hero-visual-container">
           <div className="hero-arch-card">
             <div className="hero-arch-media-wrapper">
-              <video
-                ref={videoRef}
-                preload="none"
-                poster="/images/hero-titik-sujud.jpg"
-                playsInline
-                onEnded={() => setIsPlaying(false)}
-              >
-                <source src="/videos/titik-sujud-intro.mp4" type="video/mp4" />
-                Browser Anda tidak mendukung pemutar video.
-              </video>
+              
+<video
+  ref={videoRef}
+  preload="auto"
+  playsInline
+  onLoadedData={(event) => {
+    const video = event.currentTarget;
+    video.pause();
+    video.currentTime = 0;
+  }}
+  onPlay={() => setIsPlaying(true)}
+  onPause={() => setIsPlaying(false)}
+  onEnded={() => setIsPlaying(false)}
+>
+  <source src="/video/video.mp4" type="video/mp4" />
+  Browser Anda tidak mendukung pemutar video.
+</video>
 
-              {/* Tombol Play Melayang di Pojok Bawah Frame */}
+
               <button
                 type="button"
-                className={`corner-play-button ${isPlaying ? "is-playing" : ""}`}
+                className={`corner-play-button ${
+                  isPlaying ? "is-playing" : ""
+                }`}
                 onClick={handlePlayVideo}
                 aria-label={isPlaying ? "Jeda video" : "Putar video"}
               >
@@ -84,7 +100,10 @@ export default function HeroSection() {
                     <Play size={16} style={{ marginLeft: "2px" }} />
                   )}
                 </div>
-                <span>{isPlaying ? "Jeda" : "Tonton Video"}</span>
+
+                <span>
+                  {isPlaying ? "Jeda" : "Tonton Video"}
+                </span>
               </button>
             </div>
           </div>

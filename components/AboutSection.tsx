@@ -1,5 +1,6 @@
 
 import { Heart, HandHeart, Users } from "lucide-react";
+import Image from "next/image";
 
 const values = [
   {
@@ -61,7 +62,14 @@ export default function AboutSection() {
           </div>
 
           <div className="intro-visual">
-            <div className="intro-photo" role="img" aria-label="Dokumentasi musholla portable Titik Sujud" />
+            <div className="intro-photo-container" style={{ position: "relative", width: "100%", height: "400px" }}>
+  <Image 
+    src="/images/foto3.png" 
+    alt="Dokumentasi musholla portable Titik Sujud" 
+    fill
+    style={{ objectFit: "cover", borderRadius: "16px" }}
+  />
+</div>
 
             <div className="intro-caption">
               <span className="caption-mark">“</span>

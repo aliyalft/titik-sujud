@@ -1,0 +1,289 @@
+
+/* JANGKAUAN LAYANAN
+   Layout utama: admin.css
+   File ini hanya mengatur form dan daftar wilayah. */
+
+.area-form-panel,
+.area-list-panel {
+  margin-top: 24px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.area-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(220px, 1fr);
+  gap: 18px;
+  padding: 0 24px 24px;
+}
+
+.area-form label {
+  display: grid;
+  align-content: start;
+  gap: 9px;
+  min-width: 0;
+  color: #526b57;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.area-form input,
+.area-form select {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  height: 48px;
+  padding: 0 14px;
+  border: 1px solid #dce8dc;
+  border-radius: 12px;
+  outline: none;
+  color: #173b28;
+  background: #fbfdfb;
+  font: inherit;
+  font-size: 14px;
+}
+
+.area-form input:focus,
+.area-form select:focus {
+  border-color: #679875;
+  box-shadow: 0 0 0 3px rgb(91 145 104 / 12%);
+}
+
+.area-form-actions {
+  display: flex;
+  grid-column: 1 / -1;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.area-submit,
+.area-cancel {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 44px;
+  padding: 0 18px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    transform 160ms ease;
+}
+
+.area-submit {
+  color: #fff;
+  background: #245d39;
+}
+
+.area-submit:hover:not(:disabled) {
+  background: #19492c;
+}
+
+.area-submit:active:not(:disabled),
+.area-cancel:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.area-submit:disabled,
+.area-cancel:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.area-cancel {
+  border-color: #dce8dc;
+  color: #526b57;
+  background: #fff;
+}
+
+.area-cancel:hover:not(:disabled) {
+  background: #f4f8f3;
+}
+
+.area-list {
+  padding: 0 24px 18px;
+  min-width: 0;
+}
+
+.area-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+  padding: 17px 0;
+  border-top: 1px solid #edf1eb;
+}
+
+.area-pin {
+  display: grid;
+  flex: 0 0 42px;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 13px;
+}
+
+.area-pin.active {
+  color: #2e6d40;
+  background: #e6f3e7;
+}
+
+.area-pin.upcoming {
+  color: #326b9d;
+  background: #e9f2fa;
+}
+
+.area-name {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.area-name strong,
+.area-name small {
+  display: block;
+}
+
+.area-name strong {
+  color: #173b28;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.area-name small {
+  margin-top: 5px;
+  color: #829385;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.area-hidden .area-name strong {
+  color: #879488;
+}
+
+.area-actions {
+  display: flex;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.area-actions button {
+  display: grid;
+  flex: 0 0 36px;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  place-items: center;
+  border: 1px solid #e1eae0;
+  border-radius: 10px;
+  color: #4e7656;
+  background: #fff;
+  cursor: pointer;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease;
+}
+
+.area-actions button:hover:not(:disabled) {
+  border-color: #cbdcca;
+  background: #edf5ec;
+}
+
+.area-actions button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.area-actions button.area-delete {
+  color: #a23b37;
+}
+
+.area-actions button.area-delete:hover:not(:disabled) {
+  border-color: #f0d6d4;
+  background: #fff3f2;
+}
+
+.area-notice {
+  margin-top: 18px;
+  padding: 13px 16px;
+  border: 1px solid #d6e9d6;
+  border-radius: 12px;
+  color: #27663d;
+  background: #eff8ee;
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.area-loading,
+.area-empty {
+  margin: 0;
+  padding: 24px;
+  color: #829385;
+  font-size: 13px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .area-form {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .area-form-actions {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .area-form {
+    gap: 15px;
+    padding: 0 16px 18px;
+  }
+
+  .area-list {
+    padding: 0 16px 12px;
+  }
+
+  .area-item {
+    flex-wrap: wrap;
+    gap: 11px;
+  }
+
+  .area-name {
+    flex: 1 1 calc(100% - 56px);
+  }
+
+  .area-actions {
+    width: 100%;
+    padding-left: 53px;
+    justify-content: flex-start;
+  }
+
+  .area-actions button {
+    flex-basis: 35px;
+    width: 35px;
+    height: 35px;
+  }
+
+  .area-form-actions {
+    align-items: stretch;
+  }
+
+  .area-submit,
+  .area-cancel {
+    min-height: 43px;
+  }
+}
